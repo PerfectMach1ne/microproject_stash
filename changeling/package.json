@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "For helping me update the P2E/Co-Re changelog on a GitHub Pages website.",
   "main": "app.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

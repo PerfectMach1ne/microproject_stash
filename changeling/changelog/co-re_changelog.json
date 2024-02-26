@@ -193,8 +193,143 @@
                     "date": "29.01.24",
                     "lines": [
                         {
-                            "prefix": "",
-                            "content": ""
+                            "prefix": "*",
+                            "content": "Updated the story map."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Altered some story part names."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Improved #.Æ.PATHWAY_TO_EDEN_ structure."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "The https://perfectmach1ne.github.io/ changelog website now also has Google Docs links."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 8,
+                    "version": "0.3.1",
+                    "build": 22,
+                    "hasDate": true,
+                    "date": "29.01.24",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Updated the story map."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Updated the #.Æ.PATHWAY_TO_EDEN_ structure."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 9,
+                    "version": "0.3.1",
+                    "build": 23,
+                    "hasDate": true,
+                    "date": "29.01.24",
+                    "lines": [
+                        {
+                            "prefix": "+",
+                            "content": "Added \"Not-so-secret P2Extras\" section to the story map doc."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 10,
+                    "version": "0.3.1",
+                    "build": 25,
+                    "hasDate": true,
+                    "date": "(29-30).01.24",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Updated `Entry_0.0.1-1`."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added blank entries from the intervals `[0.0.1-3,0.0.1-12]`, [i.0.0-1, i.0.0-6]`."
+                        },
+                        {
+                            "prefix": "!",
+                            "content": "Fixed an error in part-superarc-arc-entry structure."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 11,
+                    "version": "0.3.1",
+                    "build": 29,
+                    "hasDate": true,
+                    "date": "30.01.24",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Changelog coloring update."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Minor changelog fix lol."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 12,
+                    "version": "0.3.2",
+                    "build": 33,
+                    "hasDate": true,
+                    "date": "04.02.24",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Organizational architecture decisions."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added a playlist with songs related to each expedition of P2E 0 Æ !!"
+                        }
+                    ]
+                },
+                {
+                    "change_id": 13,
+                    "version": "0.3.3",
+                    "build": 34,
+                    "hasDate": true,
+                    "date": "(04-26).02.24",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Organizational architecture decisions."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Updated the #.Æ.PATHWAY_TO_EDEN structure."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Updated the P2E storyline flow + connection graph."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added a playlist with songs related to each expedition of P2E 0 Æ !!"
+                        }
+                    ]
+                },
+                {
+                    "change_id": 14,
+                    "version": "0.3.3",
+                    "build": 35,
+                    "hasDate": false,
+                    "date": null,
+                    "lines": [
+                        {
+                            "prefix": "!",
+                            "content": "Started work on a new changelog management system."
                         }
                     ]
                 }

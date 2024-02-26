@@ -1,0 +1,82 @@
+html {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  column-gap: 25px;
+}
+
+button {
+  border: 0;
+  line-height: 3;
+  padding: 0 15px; 
+  background-color: #184e4e;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+button a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.alice-updates {
+  color: aliceblue;
+  white-space: pre;
+}
+
+header {
+  text-align: center;
+  color: #ff0000;
+  font-size: 3rem;
+  padding: 2em;
+}
+
+span#exeden {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+span#indev {
+  font-weight: bold;
+  color: #9900ff;
+}
+
+span#pre-alpha {
+  font-weight: bold;
+  color: #4a86e8;
+}
+
+span#alpha {
+  font-weight: bold;
+  color: #ff00ff;
+}
+
+span#beta {
+  font-weight: bold;
+  color: #ff9900;
+}
+
+span#releasecandidate {
+  font-weight: bold;
+  color: #00ff00;
+}
+
+span#ab-aeternitate {
+  font-weight: bold;
+  color: #ffff00;
+}
+
+#latest-aside {
+  color: lime;
+  background-color: #14026b;
+}
+
+
+.hideme {
+  visibility: hidden;
+}

@@ -1,0 +1,228 @@
+{
+    "head_change": 13,
+    "hat_change": 14,
+    "current_stage": "exeden",
+    "dev_stages": [
+        {
+            "stage": "exeden",
+            "changes": [
+                {
+                    "change_id": 0,
+                    "version": "0.0.0",
+                    "build": 5,
+                    "hasDate": false,
+                    "date": null,
+                    "lines": [
+                        {
+                            "prefix": "+",
+                            "content": "Added a \"READ ME (PLEASE).nottxt\" doc"
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Continuum Reverie (Co-Re) as a story superuniverse is now versioned (O Fatum of the Ancient Protocol Greece, please don't let this end badly)"
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "#.\"EDEN_DATABASE\"_"
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added `Axioms of Continuum Reverie.txt`"
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "#.\"PATHWAY_TO_EDEN\"_"
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Prepared 2 folders for two WIP Co-Re/P2E Indev story groups"
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Prepared a \"STORY MAP (HOW TO READ)\" doc (unfinished)"
+                        }
+                    ]
+                },
+                {
+                    "change_id": 1,
+                    "version": "0.0.1",
+                    "build": 8,
+                    "hasDate": false,
+                    "date": null,
+                    "lines": [
+                        {
+                            "prefix": "!",
+                            "content": "Updated the story map."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added `Entry_0.0.0-0.`"
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added `Entry_0.3.0-0 :: #.DIRECTIVES_`."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 2,
+                    "version": "0.0.1",
+                    "build": 9,
+                    "hasDate": false,
+                    "date": null,
+                    "lines": [
+                        {
+                            "prefix": "!",
+                            "content": "Updated the story map."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 3,
+                    "version": "0.1.0",
+                    "build": 10,
+                    "hasDate": true,
+                    "date": "30.06.2023",
+                    "lines": [
+                        {
+                            "prefix": "!",
+                            "content": "I did P2E draws for an art gallery!!! Or more specifically, a gay library - an exhibition about being trans there. Let this, dear CHANGELOG.TXT explorer, give you a good idea about what Co-Re and P2E is going to be like or what it really is about."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 4,
+                    "version": "0.2.0",
+                    "build": 11,
+                    "hasDate": true,
+                    "date": "12.01.2024",
+                    "lines": [
+                        {
+                            "prefix": "!",
+                            "content": "Multiple undocumented changes (I was busy surviving this hell, okay?)."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Changed the versioning system. (Renamed Indev to Exeden; kept Indev and added Exeden & Pre-alpha story/art/world/superuniverse development stages)."
+                        }
+                    ]
+                },
+                {
+                    "change_id": 5,
+                    "version": "0.3.0",
+                    "build": 19,
+                    "hasDate": true,
+                    "date": "(12-28).01.2024",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Reorganized the story architecture." 
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "The Google Drive entries now contain a cell with status and last update."
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "Updated all entries in separate files to adhere to the new format."
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "Tiny versioning system tweaks."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Updated P2E 0 and P2E i scripts."
+                        },
+                        {
+                            "prefix": "*",
+                            "content": "Updated the \"READ ME (PLEASE).nottxt\" doc."
+                        },
+                        {
+                            "prefix": "-",
+                            "content": "Removed some folders that used to have public lore/entry crumbs."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Added `architecture concept.txt`."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Story superuniverse updates now available @ https://perfectmach1ne.github.io/"
+                        }
+                    ]
+                },
+                {
+                    "change_id": 6,
+                    "version": "0.3.1",
+                    "build": 20,
+                    "hasDate": true,
+                    "date": "28.01.2024",
+                    "lines": [
+                        {
+                            "prefix": "*",
+                            "content": "Reorganized the story architecture."
+                        },
+                        {
+                            "prefix": "1",
+                            "content": "Contents of old folders have been moved and sorted into new folders:"
+                        },
+                        {
+                            "prefix": "2",
+                            "content": "The Architecture EXEDEN/#.A&U.\"Assorted & Unordered\"_"
+                        },
+                        {
+                            "prefix": "2",
+                            "content": "The Architecture EXEDEN/#.Æ.PATHWAY_TO_EDEN_"
+                        },
+                        {
+                            "prefix": "2",
+                            "content": "The Architecture EXEDEN/#.P2E_SCRIPTS_"
+                        },
+                        {
+                            "prefix": "2",
+                            "content": "The Architecture EXEDEN/#.P2E_STRUCT_"
+                        }
+                    ]
+                },
+                {
+                    "change_id": 7,
+                    "version": "0.3.1",
+                    "build": 21,
+                    "hasDate": true,
+                    "date": "29.01.24",
+                    "lines": [
+                        {
+                            "prefix": "",
+                            "content": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "indev",
+            "changes": []
+        },
+        {
+            "stage": "pre-alpha",
+            "changes": []
+        },
+        {
+            "stage": "alpha",
+            "changes": []
+        },
+        {
+            "stage": "beta",
+            "changes": []
+        },
+        {
+            "stage": "releasecandidate",
+            "changes": []
+        },
+        {
+            "stage": "ab-aeternitate",
+            "changes": []
+        }
+    ]
+}

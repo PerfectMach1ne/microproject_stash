@@ -82,10 +82,12 @@ proc push {} {
   cd ..;
   exec >&@stdout git add .;
   # git commit thing here
-  puts "bweeeeeh";
-  exec >&@stdout git commit -m "changeling: push procedure test + structure progress";
-  puts "bweeeeeh x2";
-  exec >&@stdout git push -u origin main;
+  ######## 23:22 27/02/2024 success!!!
+  # puts "bweeeeeh";
+  # exec >&@stdout git commit -m "changeling: push procedure test + structure progress";
+  # puts "bweeeeeh x2";
+  # exec >&@stdout git push -u origin main;
+  ######## #._
   # then update head & hat and create a new hat change
   cd changeling;
 }

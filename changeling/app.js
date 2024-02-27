@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 
 const changelog_path = 'changelog/co-re_changelog.json';
+const backup_path = 'changelog/co-re_changelog_BACKUP.json';
 
 // https://stackoverflow.com/questions/34980249/returning-undefined-from-readfile
 //
@@ -17,6 +18,15 @@ function openChangelog_paramPass(fun) {
   });
 }
 
+function backupChangelog() {
+  fs.copyFile(changelog_path, backup_path, (err) => {
+    if (err) throw err;
+    console.log("Backup of 'co-re_changelog.json' successfully created!");
+  });
+}
+
+let getHead = () => {};
+let getHat = () => {};
 // for proc add
 let addLine = () => {};
 let addChange = () => {};
@@ -24,7 +34,7 @@ let addChange = () => {};
 let selectLine = () => {};
 let removeLine = () => {};
 // for proc commit
-let 
+let updateHeadHat = () => {};
 // for proc uncommit
 
 function main() {
@@ -32,6 +42,8 @@ function main() {
     console.log(process.argv[0] + "\n" + process.argv[1]);
     let print = (data) => { console.log(data); };
     openChangelog_paramPass(print);
+  } else if (process.argv[2] && process.argv[2] === '--backup') {
+    backupChangelog();
   }
 }
 

@@ -8,6 +8,10 @@ proc _openFile {} {
   set read_file [open "[pwd]/changelog/co-re_changelog.json" r];
 };
 
+proc _updateHeadHat {} {
+
+};
+
 proc head {file} {
   set line_number 0;
 
@@ -41,16 +45,21 @@ proc hat {file} {
 }; # "hat change", as in the latest change COMMITTED and WAITING to be published.
 
 proc status {} {
-  cd ..
-  exec >&@stdout git status
-  cd changeling
+  cd ..;
+  exec >&@stdout git status;
+  cd changeling;
 };
 
 proc add {} {
+  # first ask for prefix
+  # then for content
+  # a confirm option for proofreading~~!
   puts "TODO: add";
 };
 
 proc remove {} {
+  # make JS fetch all hat change lines from JSON
+  #
   puts "TODO: remove";
 };
 
@@ -63,12 +72,22 @@ proc uncommit {} {
 }
 
 proc pull {} {
-  puts "TODO: pull";
+  cd ..;
+  exec >&@stdout git pull origin main;
+  cd changeling;
 }
 
 proc push {} {
   pull;
-  puts "TODO: push";
+  cd ..;
+  exec >&@stdout git add .;
+  # git commit thing here
+  puts "bweeeeeh";
+  exec >&@stdout git commit -m "changeling: push procedure test + structure progress";
+  puts "bweeeeeh x2";
+  exec >&@stdout git push -u origin main;
+  # then update head & hat and create a new hat change
+  cd changeling;
 }
 
 

@@ -323,13 +323,21 @@
                 {
                     "change_id": 14,
                     "version": "0.3.3",
-                    "build": 35,
-                    "hasDate": false,
-                    "date": null,
+                    "build": 38,
+                    "hasDate": true,
+                    "date": "(26-27).02.24",
                     "lines": [
                         {
                             "prefix": "!",
                             "content": "Started work on a new changelog management system."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Updated P2E [6, 7] scripts."
+                        },
+                        {
+                            "prefix": "+",
+                            "content": "Updated the character profiles."
                         }
                     ]
                 }

@@ -84,7 +84,7 @@ proc push {} {
   # git commit thing here
   ######## 23:22 27/02/2024 success!!!
   # puts "bweeeeeh";
-  # exec >&@stdout git commit -m "changeling: push procedure test + structure progress";
+  # exec >&@stdout git commit -m "changeling (cli.tcl): push procedure test + structure progress";
   # puts "bweeeeeh x2";
   # exec >&@stdout git push -u origin main;
   ######## #._

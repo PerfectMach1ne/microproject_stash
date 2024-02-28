@@ -54,7 +54,7 @@ proc status {} {
   cd ..;
   exec >&@stdout git status;
   cd changeling;
-};
+}; # Print the status of the local git repo.
 
 proc add {} {
   # first ask for prefix
@@ -75,18 +75,19 @@ proc commit {} {
 
 proc uncommit {} {
   puts "TODO: uncommit";
-}
+};
 
 proc pull {} {
   cd ..;
   exec >&@stdout git pull origin main;
   cd changeling;
-}
+}; # Pull project repo changes to ensure no errors happen during the push attempt.
 
 proc push {} {
   pull;
   cd ..;
   exec >&@stdout git add .;
+  
   # git commit thing here
   ######## 23:22 27/02/2024 success!!!
   # puts "bweeeeeh";
@@ -95,18 +96,22 @@ proc push {} {
   # exec >&@stdout git push -u origin main;
   ######## #._
   # then update head & hat and create a new hat change
+  _updateHeadHat;
+
   cd changeling;
-}
+}; # Push the changelog changes to both the project repo and the website repo.
 
 proc backup {} {
   exec >&@stdout node app.js --backup;
-}
+};
 
 proc htmlify {} {
   exec >&@stdout node app.js --htmlify;
-}
+};
 
+# Open the changelog file
 _openFile;
+
 flush stdout;
 set c [gets stdin];
 while {$c != "q"} {
@@ -142,4 +147,5 @@ while {$c != "q"} {
   # };
 };
 
+# Close the changelog file.
 close $changelog_file;

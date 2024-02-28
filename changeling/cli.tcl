@@ -14,14 +14,17 @@ proc _updateHeadHat {} {
 
 proc head {file} {
   set line_number 0;
+  puts -nonewline "Latest head change: ";
 
   while { [gets $file line] >= 0 } {
     if { [string first "head_change" $line] != -1 } {
-      puts [regexp -all -inline {[0-9]+} $line]
+      puts [regexp -all -inline {[0-9]+} $line];
     };
 
     incr line_number 0;
   };
+
+  exec >&@stdout node app.js --latest-head;
 
   # https://stackoverflow.com/questions/70462356/why-cant-i-use-same-file-channel-twice-in-tcl 
   # This is normal behavior for reading from files in every programming language and OS I'm familiar
@@ -32,14 +35,17 @@ proc head {file} {
 
 proc hat {file} {
   set line_number 0;
+  puts -nonewline "Latest hat change: ";
 
   while { [gets $file line] >= 0 } {
     if { [string first "hat_change" $line] != -1 } {
-      puts [regexp -all -inline {[0-9]+} $line]
+      puts [regexp -all -inline {[0-9]+} $line];
     };
 
     incr line_number 0;
   };
+
+  exec >&@stdout node app.js --latest-hat;
 
   seek $file 0;
 }; # "hat change", as in the latest change COMMITTED and WAITING to be published.
@@ -92,7 +98,13 @@ proc push {} {
   cd changeling;
 }
 
+proc backup {} {
+  exec >&@stdout node app.js --backup;
+}
 
+proc htmlify {} {
+  exec >&@stdout node app.js --htmlify;
+}
 
 _openFile;
 flush stdout;
@@ -116,6 +128,8 @@ while {$c != "q"} {
     pull;
   } elseif {$c == "push"} {
     push;
+  } elseif {$c == "backup" || $c == "bckup" || $c == "bup"} {
+    backup;
   }
   
   flush stdout;

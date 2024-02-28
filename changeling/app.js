@@ -76,19 +76,37 @@ function updateHeadHat() {
 }
 // for proc uncommit
 
+/// Methods for converting JSON data to HTML tags could be put in two static classes.
+/// ...or, I suppose, I could learn about ES6 modules? idk
+
 function main() {
+  // Fetch all the important stuff from JSON object into memory.
   let changelog = _openChangelog();
   let current_changes = getCurrentStageChanges(changelog);
   let head_change = getHead(changelog.head_change, current_changes);
   let hat_change = getHat(changelog.hat_change, current_changes);
   if (process.argv[2] && process.argv[2] === '-a') {
-    // console.log(changelog.dev_stages);
     console.log(current_changes);
-    console.log(head_change);
-    console.log(hat_change);
   } else if (process.argv[2] && process.argv[2] === '--backup') {
     _backupChangelog();
+  } else if (process.argv[2] && process.argv[2] === '--latest-head') {
+    console.log(head_change);
+  } else if (process.argv[2] && process.argv[2] === '--latest-hat') {
+    console.log(hat_change);
+  } else if (process.argv[2] && process.argv[2] === '--add') {
+    
+  } else if (process.argv[2] && process.argv[2] === '--remove') {
+
+  } else if (process.argv[2] && process.argv[2] === '--commit') {
+
+  } else if (process.argv[2] && process.argv[2] === '--uncommit') {
+  
+  } else if (process.argv[2] && process.argv[2] === '--push') {
+  
+  } else if (process.argv[2] && process.argv[2] === '--htmlify') {
+  
+  } else if (process.argv[2] && process.argv[2] === '') {
+
   }
 }
-
 main();

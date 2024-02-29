@@ -322,10 +322,10 @@
                 },
                 {
                     "change_id": 14,
-                    "version": "0.3.3",
-                    "build": 49,
+                    "version": "0.4.0",
+                    "build": 40,
                     "hasDate": true,
-                    "date": "(26-29).02.24",
+                    "date": "(26-01).(02-03).24",
                     "lines": [
                         {
                             "prefix": "!",

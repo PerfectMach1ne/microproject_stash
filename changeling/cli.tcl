@@ -113,6 +113,10 @@ proc htmlify {} {
   exec >&@stdout node app.js --htmlify;
 };
 
+proc help {} {
+  # todo: write a big help script here
+};
+
 # Open the changelog file
 _openFile;
 

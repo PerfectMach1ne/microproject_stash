@@ -7,6 +7,10 @@ const backup_path = 'changelog/co-re_changelog_BACKUP.json';
 //
 // readFile is executed asynchronously, so data can only be accessed inside the callback
 // function, if you want it to be synchronous, you should use readFileSync
+//
+///////////////////////////////////////////////////////////////////////////
+// Opens the changelog file and returns it as a JSON object.
+///////////////////////////////////////////////////////////////////////////
 function _openChangelog() {
   try {
     let json_data = readFileSync(changelog_path, 'utf-8');
@@ -17,6 +21,9 @@ function _openChangelog() {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////
+// Backup the changelog file.
+///////////////////////////////////////////////////////////////////////////
 function _backupChangelog() {
   try {
     copyFileSync(changelog_path, backup_path);
@@ -25,6 +32,10 @@ function _backupChangelog() {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////
+// Find the current P2E stage's list of changes in the changelog JSON object
+// passed as an argument, then return it.
+///////////////////////////////////////////////////////////////////////////
 function getCurrentStageChanges(changelog) {
   // Fetch current P2E stage from the changelog JSON object.
   let current_stage = changelog.current_stage;
@@ -41,6 +52,9 @@ function getCurrentStageChanges(changelog) {
   return current_stage_changes;
 }
 
+///////////////////////////////////////////////////////////////////////////
+// Fetch and return the head change from the id and change list passed as arguments.
+///////////////////////////////////////////////////////////////////////////
 function getHead(head_id, changes) {
   for (let i = 0; i < changes.length; i++) {
     if (changes[i].change_id === head_id) {
@@ -49,6 +63,9 @@ function getHead(head_id, changes) {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////
+// Fetch and return the hat change from the id and change list passed as arguments.
+///////////////////////////////////////////////////////////////////////////
 function getHat(hat_id, changes) {
   for (let i = 0; i < changes.length; i++) {
     if (changes[i].change_id === hat_id) {
@@ -56,24 +73,30 @@ function getHat(hat_id, changes) {
     }
   }
 }
+
 // for proc add
 function addLine() {
   let todo = undefined;
 }
+
 function addChange() {
   let todo = undefined;
 }
+
 // for proc remove
 function selectLine() {
   let todo = undefined;
 }
+
 function removeLine() {
   let todo = undefined;
 }
+
 // for proc commit
 function updateHeadHat() {
   let todo = undefined;
 }
+
 // for proc uncommit
 
 /// Methods for converting JSON data to HTML tags could be put in two static classes.
@@ -85,6 +108,7 @@ function main() {
   let current_changes = getCurrentStageChanges(changelog);
   let head_change = getHead(changelog.head_change, current_changes);
   let hat_change = getHat(changelog.hat_change, current_changes);
+  
   if (process.argv[2] && process.argv[2] === '-a') {
     console.log(current_changes);
   } else if (process.argv[2] && process.argv[2] === '--backup') {

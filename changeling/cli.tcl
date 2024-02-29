@@ -60,20 +60,24 @@ proc add {} {
   # first ask for prefix
   # then for content
   # a confirm option for proofreading~~!
+  exec >&@stdout node app.js --add;
   puts "TODO: add";
 };
 
 proc remove {} {
   # make JS fetch all hat change lines from JSON
   #
+  exec >&@stdout node app.js --remove;
   puts "TODO: remove";
 };
 
 proc commit {} {
+  exec >&@stdout node app.js --commit;
   puts "TODO: commit";
 };
 
 proc uncommit {} {
+  exec >&@stdout node app.js --uncommit;
   puts "TODO: uncommit";
 };
 

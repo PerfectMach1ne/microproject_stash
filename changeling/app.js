@@ -1,4 +1,4 @@
-import { readFileSync, copyFileSync } from 'node:fs';
+import { openSync, readFileSync, closeSync, copyFileSync,  } from 'node:fs';
 
 const changelog_path = 'changelog/co-re_changelog.json';
 const backup_path = 'changelog/co-re_changelog_BACKUP.json';
@@ -12,9 +12,27 @@ const backup_path = 'changelog/co-re_changelog_BACKUP.json';
 // Opens the changelog file and returns it as a JSON object.
 ///////////////////////////////////////////////////////////////////////////
 function _openChangelog() {
+  console.log("Opening the changelog file...");
+  let file = undefined;
+
   try {
-    let json_data = readFileSync(changelog_path, 'utf-8');
+    file = openSync(changelog_path);
+    console.log("Changelog file opened successfully!");
+  } catch (err) {
+    console.error("An error occurred while attempting to open the changelog file!\n", err);
+  }
+
+  try {
+    let json_data = readFileSync(file, 'utf-8');
     json_data = JSON.parse(json_data);
+
+    console.log("Closing the changelog file and returning data...");
+    try {
+      closeSync(file);
+    } catch (err) {
+      console.error("An error occurred while attempting to close the changelog file!\n", err);
+    }
+    
     return json_data;
   } catch (err) {
     console.error("An error occurred while attempting to read the changelog file!\n", err);
@@ -27,6 +45,7 @@ function _openChangelog() {
 function _backupChangelog() {
   try {
     copyFileSync(changelog_path, backup_path);
+    console.log("Successfully created a changelog backup!");
   } catch (err) {
     console.error("An error occurred while attemping to create a changelog backup!");
   }
@@ -109,28 +128,27 @@ function main() {
   let head_change = getHead(changelog.head_change, current_changes);
   let hat_change = getHat(changelog.hat_change, current_changes);
   
-  if (process.argv[2] && process.argv[2] === '-a') {
-    console.log(current_changes);
-  } else if (process.argv[2] && process.argv[2] === '--backup') {
+  if (process.argv[2] === undefined) {
+    console.log("ToDo noparams");
+    // console.log(current_changes);
+  } else if (process.argv[2] === '--backup') {
     _backupChangelog();
-  } else if (process.argv[2] && process.argv[2] === '--latest-head') {
+  } else if (process.argv[2] === '--latest-head') {
     console.log(head_change);
-  } else if (process.argv[2] && process.argv[2] === '--latest-hat') {
+  } else if (process.argv[2] === '--latest-hat') {
     console.log(hat_change);
-  } else if (process.argv[2] && process.argv[2] === '--add') {
-    
-  } else if (process.argv[2] && process.argv[2] === '--remove') {
-
-  } else if (process.argv[2] && process.argv[2] === '--commit') {
-
-  } else if (process.argv[2] && process.argv[2] === '--uncommit') {
-  
-  } else if (process.argv[2] && process.argv[2] === '--push') {
-  
-  } else if (process.argv[2] && process.argv[2] === '--htmlify') {
-  
-  } else if (process.argv[2] && process.argv[2] === '') {
-
+  } else if (process.argv[2] === '--add') {
+    console.log("ToDo");
+  } else if (process.argv[2] === '--remove') {
+    console.log("ToDo");
+  } else if (process.argv[2] === '--commit') {
+    console.log("ToDo");
+  } else if (process.argv[2] === '--uncommit') {
+    console.log("ToDo");
+  } else if (process.argv[2] === '--push') {
+    console.log("ToDo");
+  } else if (process.argv[2] === '--htmlify') {
+    console.log("ToDo");
   }
 }
 

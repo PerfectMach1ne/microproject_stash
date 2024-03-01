@@ -4,6 +4,8 @@ For helping me update the P2E/Co-Re changelog on a GitHub Pages website.
 
 ### Installation (to my knowledge)
 
+wait why did i write this. why would anyone want to install this. wtf.
+
 ##### Install Node for running `app.js`
 
 `npm install -D changeling`

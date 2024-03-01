@@ -1,0 +1,13 @@
+{
+  "name": "faust",
+  "version": "0.0.1",
+  "description": "Listen, I like the green squares, alright?\r But I cannot code all the time! So, I made an app to let me add green squares even when I don't code!\r Isn't that so nice!",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "mE",
+  "license": "ISC"
+}

@@ -116,7 +116,7 @@ function listLines(head_change, return_mode = false) {
                 + ' ' + single_change.content);
   }
 
-  if (!return_mode ) {
+  if (!return_mode) {
     console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
     console.log("Date: " + head_change.date);
     for (let i = 0; i < str_line_list.length; i++) {
@@ -131,11 +131,21 @@ function listLines(head_change, return_mode = false) {
 // Select a line from the head (wait.. should't it be hat?) change and .
 ///////////////////////////////////////////////////////////////////////////
 function selectLine(lines) {
+  // 1. Print out all the lines
+  // 2. Let me pick a line
   console.log(lines);
   return lines[0];
 }
 
+///////////////////////////////////////////////////////////////////////////
+// Delete a line passed an as the parameter.
+///////////////////////////////////////////////////////////////////////////
 function removeLine(line) {
+  // 1. Receive the line to delete
+  // 2. Give out a confirmation question
+  // 3. Find that line in changelog object
+  // 4. Delete it
+  // 5. [something something information for commit function that something got deleted]
   console.log(line);
 }
 

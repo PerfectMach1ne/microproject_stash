@@ -103,19 +103,29 @@ function addChange() {
 }
 
 // for proc list
-function listLines(head_change, returnMode = false) {
-  if (!returnMode || returnMode === undefined) {
+function listLines(head_change, return_mode = false) {
+  if (!return_mode || return_mode === undefined) {
     console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
     console.log("Date: " + head_change.date);
     for (let i = 0; i < head_change.lines.length; i++) {
-      let change = head_change.lines[i];
-      console.log(( !isNaN(Number(change.prefix)) ?
-                  ' '.repeat(2 * (Number(change.prefix) - 1)) + '--' :
-                  change.prefix )
-                  + ' ' + change.content);
+      let single_change = head_change.lines[i];
+      console.log(( !isNaN(Number(single_change.prefix)) ?
+                  ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
+                  single_change.prefix )
+                  + ' ' + single_change.content);
     }
   } else {
-    return 'to_implement :)'
+    let str_line_list = [];
+    
+    for (let i = 0; i < head_change.lines.length; i++) {
+      let single_change = head_change.lines[i];
+      str_line_list.push(( !isNaN(Number(single_change.prefix)) ?
+                  ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
+                  single_change.prefix )
+                  + ' ' + single_change.content);
+    }
+
+    return str_line_list;
   }
 }
 
@@ -130,7 +140,7 @@ function removeLine() {
 
 // for proc commit
 // for proc uncommit
-function updateHeadHat(changelog, head, hat, uncommitMode) {
+function updateHeadHat(changelog, head, hat, uncommit_mode = false) {
   console.log("ToDo: updateHeadHat()");
 }
 
@@ -154,6 +164,7 @@ function main() {
     console.log(hat_change);
   } else if (process.argv[2] === '--list') {
     listLines(head_change);
+    console.log(listLines(head_change, true));
   } else if (process.argv[2] === '--add') {
     console.log("ToDo");
   } else if (process.argv[2] === '--remove') {

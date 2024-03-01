@@ -12,30 +12,30 @@ const backup_path = 'changelog/co-re_changelog_BACKUP.json';
 // Opens the changelog file and returns it as a JSON object.
 ///////////////////////////////////////////////////////////////////////////
 function _openChangelog() {
-  console.log("Opening the changelog file...");
+  console.log("[app.js] Opening the changelog file...");
   let file = undefined;
 
   try {
     file = openSync(changelog_path);
-    console.log("Changelog file opened successfully!");
+    console.log("[app.js] Changelog file opened successfully!");
   } catch (err) {
-    console.error("An error occurred while attempting to open the changelog file!\n", err);
+    console.error("[app.js] An error occurred while attempting to open the changelog file!\n", err);
   }
 
   try {
     let json_data = readFileSync(file, 'utf-8');
     json_data = JSON.parse(json_data);
 
-    console.log("Closing the changelog file and returning data...");
+    console.log("[app.js] Closing the changelog file and returning data...");
     try {
       closeSync(file);
     } catch (err) {
-      console.error("An error occurred while attempting to close the changelog file!\n", err);
+      console.error("[app.js] An error occurred while attempting to close the changelog file!\n", err);
     }
     
     return json_data;
   } catch (err) {
-    console.error("An error occurred while attempting to read the changelog file!\n", err);
+    console.error("[app.js] An error occurred while attempting to read the changelog file!\n", err);
   }
 }
 
@@ -45,9 +45,9 @@ function _openChangelog() {
 function _backupChangelog() {
   try {
     copyFileSync(changelog_path, backup_path);
-    console.log("Successfully created a changelog backup!");
+    console.log("[app.js] Successfully created a changelog backup!");
   } catch (err) {
-    console.error("An error occurred while attemping to create a changelog backup!");
+    console.error("[app.js] An error occurred while attemping to create a changelog backup!");
   }
 }
 
@@ -103,13 +103,19 @@ function addChange() {
 }
 
 // for proc list
-function listLines(head_change) {
-  for (let i = 0; i < head_change.lines.length; i++) {
-    let change = head_change.lines[i];
-    console.log(( !isNaN(Number(change.prefix)) ?
-                ' '.repeat(2 * (Number(change.prefix) - 1)) + '--' :
-                change.prefix )
-                + ' ' + change.content);
+function listLines(head_change, returnMode = false) {
+  if (!returnMode || returnMode === undefined) {
+    console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
+    console.log("Date: " + head_change.date);
+    for (let i = 0; i < head_change.lines.length; i++) {
+      let change = head_change.lines[i];
+      console.log(( !isNaN(Number(change.prefix)) ?
+                  ' '.repeat(2 * (Number(change.prefix) - 1)) + '--' :
+                  change.prefix )
+                  + ' ' + change.content);
+    }
+  } else {
+    return 'to_implement :)'
   }
 }
 
@@ -147,7 +153,7 @@ function main() {
   } else if (process.argv[2] === '--latest-hat') {
     console.log(hat_change);
   } else if (process.argv[2] === '--list') {
-    listLines(current_changes[6]);
+    listLines(head_change);
   } else if (process.argv[2] === '--add') {
     console.log("ToDo");
   } else if (process.argv[2] === '--remove') {

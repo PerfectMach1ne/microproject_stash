@@ -1,4 +1,4 @@
-import { openSync, readFileSync, closeSync, copyFileSync,  } from 'node:fs';
+import { openSync, readFileSync, closeSync, copyFileSync } from 'node:fs';
 
 const changelog_path = 'changelog/co-re_changelog.json';
 const backup_path = 'changelog/co-re_changelog_BACKUP.json';
@@ -102,6 +102,17 @@ function addChange() {
   let todo = undefined;
 }
 
+// for proc list
+function listLines(head_change) {
+  for (let i = 0; i < head_change.lines.length; i++) {
+    let change = head_change.lines[i];
+    console.log(( !isNaN(Number(change.prefix)) ?
+                ' '.repeat(2 * (Number(change.prefix) - 1)) + '--' :
+                change.prefix )
+                + ' ' + change.content);
+  }
+}
+
 // for proc remove
 function selectLine() {
   let todo = undefined;
@@ -112,11 +123,10 @@ function removeLine() {
 }
 
 // for proc commit
-function updateHeadHat() {
-  let todo = undefined;
-}
-
 // for proc uncommit
+function updateHeadHat(changelog, head, hat, uncommitMode) {
+  console.log("ToDo: updateHeadHat()");
+}
 
 /// Methods for converting JSON data to HTML tags could be put in two static classes.
 /// ...or, I suppose, I could learn about ES6 modules? idk
@@ -130,13 +140,14 @@ function main() {
   
   if (process.argv[2] === undefined) {
     console.log("ToDo noparams");
-    // console.log(current_changes);
   } else if (process.argv[2] === '--backup') {
     _backupChangelog();
   } else if (process.argv[2] === '--latest-head') {
     console.log(head_change);
   } else if (process.argv[2] === '--latest-hat') {
     console.log(hat_change);
+  } else if (process.argv[2] === '--list') {
+    listLines(current_changes[6]);
   } else if (process.argv[2] === '--add') {
     console.log("ToDo");
   } else if (process.argv[2] === '--remove') {

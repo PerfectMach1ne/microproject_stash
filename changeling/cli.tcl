@@ -2,15 +2,16 @@
 
 catch {console show};
 
+# Create a global changelog_file variable and set its value to some empty string.
 set changelog_file {};
 proc _openFile {} {
   upvar 1 changelog_file read_file;
   set read_file [open "[pwd]/changelog/co-re_changelog.json" r];
 };
 
-proc _updateHeadHat {} {
-
-};
+# proc _updateHeadHat {} {
+#   exec >&@stdout node app.js --update-head-hat;
+# };
 
 proc head {file} {
   set line_number 0;
@@ -56,6 +57,10 @@ proc status {} {
   cd changeling;
 }; # Print the status of the local git repo.
 
+proc list_ {} {
+  exec >&@stdout node app.js --list;
+}
+
 proc add {} {
   # first ask for prefix
   # then for content
@@ -91,18 +96,13 @@ proc push {} {
   pull;
   cd ..;
   exec >&@stdout git add .;
-  
   # git commit thing here
-  ######## 23:22 27/02/2024 success!!!
-  # puts "bweeeeeh";
   # exec >&@stdout git commit -m "changeling (cli.tcl): push procedure test + structure progress";
-  # puts "bweeeeeh x2";
   # exec >&@stdout git push -u origin main;
-  ######## #._
-  # then update head & hat and create a new hat change
-  _updateHeadHat;
-
-  cd changeling;
+  # then update head & hat and create a new hat change 
+  
+  # cd changeling;
+  # _updateHeadHat;  
 }; # Push the changelog changes to both the project repo and the website repo.
 
 proc backup {} {
@@ -129,6 +129,8 @@ while {$c != "q"} {
     hat $changelog_file;
   } elseif {$c == "status"} {
     status;
+  } elseif {$c == "list" || $c == "li"} {
+    list_;
   } elseif {$c == "add"} {
     add;
   } elseif {$c == "remove" || $c == "rem"} {

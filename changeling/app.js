@@ -104,38 +104,35 @@ function addChange() {
 
 // for proc list
 function listLines(head_change, return_mode = false) {
+  let str_line_list = [];
+  
+  for (let i = 0; i < head_change.lines.length; i++) {
+    let single_change = head_change.lines[i];
+    str_line_list.push(( !isNaN(Number(single_change.prefix)) ?
+                ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
+                single_change.prefix )
+                + ' ' + single_change.content);
+  }
+
   if (!return_mode || return_mode === undefined) {
     console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
     console.log("Date: " + head_change.date);
-    for (let i = 0; i < head_change.lines.length; i++) {
-      let single_change = head_change.lines[i];
-      console.log(( !isNaN(Number(single_change.prefix)) ?
-                  ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
-                  single_change.prefix )
-                  + ' ' + single_change.content);
+    for (let i = 0; i < str_line_list.length; i++) {
+      console.log(str_line_list[i]);
     }
   } else {
-    let str_line_list = [];
-    
-    for (let i = 0; i < head_change.lines.length; i++) {
-      let single_change = head_change.lines[i];
-      str_line_list.push(( !isNaN(Number(single_change.prefix)) ?
-                  ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
-                  single_change.prefix )
-                  + ' ' + single_change.content);
-    }
-
     return str_line_list;
   }
 }
 
 // for proc remove
-function selectLine() {
-  let todo = undefined;
+function selectLine(lines) {
+  console.log(lines);
+  return lines[0];
 }
 
-function removeLine() {
-  let todo = undefined;
+function removeLine(line) {
+  console.log(line);
 }
 
 // for proc commit
@@ -164,11 +161,11 @@ function main() {
     console.log(hat_change);
   } else if (process.argv[2] === '--list') {
     listLines(head_change);
-    console.log(listLines(head_change, true));
   } else if (process.argv[2] === '--add') {
     console.log("ToDo");
   } else if (process.argv[2] === '--remove') {
-    console.log("ToDo");
+    let selected_line = selectLine(listLines(head_change, true));
+    removeLine(selected_line);
   } else if (process.argv[2] === '--commit') {
     console.log("ToDo");
   } else if (process.argv[2] === '--uncommit') {

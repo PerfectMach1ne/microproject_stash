@@ -102,7 +102,9 @@ function addChange() {
   let todo = undefined;
 }
 
-// for proc list
+///////////////////////////////////////////////////////////////////////////
+// Fetch, format and print (or return) all relevant head change data.
+///////////////////////////////////////////////////////////////////////////
 function listLines(head_change, return_mode = false) {
   let str_line_list = [];
   
@@ -114,7 +116,7 @@ function listLines(head_change, return_mode = false) {
                 + ' ' + single_change.content);
   }
 
-  if (!return_mode || return_mode === undefined) {
+  if (!return_mode ) {
     console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
     console.log("Date: " + head_change.date);
     for (let i = 0; i < str_line_list.length; i++) {
@@ -125,7 +127,9 @@ function listLines(head_change, return_mode = false) {
   }
 }
 
-// for proc remove
+///////////////////////////////////////////////////////////////////////////
+// Select a line from the head (wait.. should't it be hat?) change and .
+///////////////////////////////////////////////////////////////////////////
 function selectLine(lines) {
   console.log(lines);
   return lines[0];
@@ -151,29 +155,37 @@ function main() {
   let head_change = getHead(changelog.head_change, current_changes);
   let hat_change = getHat(changelog.hat_change, current_changes);
   
-  if (process.argv[2] === undefined) {
-    console.log("ToDo noparams");
-  } else if (process.argv[2] === '--backup') {
-    _backupChangelog();
-  } else if (process.argv[2] === '--latest-head') {
-    console.log(head_change);
-  } else if (process.argv[2] === '--latest-hat') {
-    console.log(hat_change);
-  } else if (process.argv[2] === '--list') {
-    listLines(head_change);
-  } else if (process.argv[2] === '--add') {
-    console.log("ToDo");
-  } else if (process.argv[2] === '--remove') {
-    let selected_line = selectLine(listLines(head_change, true));
-    removeLine(selected_line);
-  } else if (process.argv[2] === '--commit') {
-    console.log("ToDo");
-  } else if (process.argv[2] === '--uncommit') {
-    console.log("ToDo");
-  } else if (process.argv[2] === '--push') {
-    console.log("ToDo");
-  } else if (process.argv[2] === '--htmlify') {
-    console.log("ToDo");
+  switch (process.argv[2]) {
+    case '--backup':
+      _backupChangelog();
+      break;
+    case '--latest-head':
+      console.log(head_change);
+      break;
+    case '--latest-hat':
+      console.log(hat_change);
+      break;
+    case '--list':
+      listLines(head_change);
+      break;
+    case '--add':
+      console.log("ToDo");
+      break;
+    case '--remove':
+      let selected_line = selectLine(listLines(head_change, true));
+      removeLine(selected_line);
+      break;
+    case '--commit':
+      break;
+    case '--uncommit':
+      break;
+    case '--push':
+      break;
+    case '--htmlify':
+      break;
+    default:
+      console.log("ToDo noparams");
+      break;
   }
 }
 

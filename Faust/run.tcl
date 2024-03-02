@@ -37,4 +37,3 @@ while {$input != "q"} {
   flush stdout;
   set input [gets stdin];
 };
-

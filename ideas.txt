@@ -1,5 +1,4 @@
 1. Just work on some main project lol xddd
-2. Faust :: for when you're hyperfixated on "green squares" and "codemonkey activity", but want or NEED to do something else.
 3. Idea 2., but put in practice.
 4. BusHunter :: Updates the BUS HUNT!!!1! ticket count CSV.
 5. Cave Dweller (Dart Edition) :: Exploration console game based on a tree algorithm.
@@ -7,3 +6,4 @@
 7. SheetSploinker :: Does things with ω Notebooks Table of Contents.
 8. A Dart Discord bot.
 9. Chrysalis :: Like Changeling, but instead of just being for my P2E changelog, it manages the other ones. Also it could possibly involve a Discord Dart bot, because why not!
+10. Make Faust less clunky and more funky~.

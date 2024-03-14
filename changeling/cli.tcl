@@ -57,10 +57,6 @@ proc status {} {
   cd changeling;
 }; # Print the status of the local git repo.
 
-proc list_ {} {
-  exec >&@stdout node app.js --list;
-}
-
 proc add {} {
   # first ask for prefix
   # then for content
@@ -129,8 +125,6 @@ while {$c != "q"} {
     hat $changelog_file;
   } elseif {$c == "status"} {
     status;
-  } elseif {$c == "list" || $c == "li"} {
-    list_;
   } elseif {$c == "add"} {
     add;
   } elseif {$c == "remove" || $c == "rem"} {

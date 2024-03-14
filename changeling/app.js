@@ -103,13 +103,13 @@ function addChange() {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-// Fetch, format and print (or return) all relevant head change data.
+// Fetch, format and print (or return) all relevant change data.
 ///////////////////////////////////////////////////////////////////////////
-function listLines(head_change, return_mode = false) {
+function listLines(change, return_mode = false) {
   let str_line_list = [];
   
-  for (let i = 0; i < head_change.lines.length; i++) {
-    let single_change = head_change.lines[i];
+  for (let i = 0; i < change.lines.length; i++) {
+    let single_change = change.lines[i];
     str_line_list.push(( !isNaN(Number(single_change.prefix)) ?
                 ' '.repeat(2 * (Number(single_change.prefix) - 1)) + '--' :
                 single_change.prefix )
@@ -117,8 +117,8 @@ function listLines(head_change, return_mode = false) {
   }
 
   if (!return_mode) {
-    console.log("Version: " + head_change.version + "#" + String(head_change.build).padStart(4, '0'));
-    console.log("Date: " + head_change.date);
+    console.log("Version: " + change.version + "#" + String(change.build).padStart(4, '0'));
+    console.log("Date: " + change.date);
     for (let i = 0; i < str_line_list.length; i++) {
       console.log(str_line_list[i]);
     }
@@ -170,19 +170,18 @@ function main() {
       _backupChangelog();
       break;
     case '--latest-head':
-      console.log(head_change);
+      // console.log(head_change);
+      listLines(head_change);
       break;
     case '--latest-hat':
-      console.log(hat_change);
-      break;
-    case '--list':
-      listLines(head_change);
+      // console.log(hat_change);
+      listLines(hat_change);
       break;
     case '--add':
       console.log("ToDo");
       break;
     case '--remove':
-      let selected_line = selectLine(listLines(head_change, true));
+      let selected_line = selectLine(listLines(hat_change, true));
       removeLine(selected_line);
       break;
     case '--commit':

@@ -2,6 +2,12 @@
 
 For helping me update the P2E/Co-Re changelog on a GitHub Pages website.
 
+##### 13/03/2024 idea
+
+Here's the revolutionary idea: we *ditch* our beloved `Tcl` for **`C`**! Now, `C` console app handles all the CLI logic, whereas the `Node.js` app does the `JSON` manipulation. `petite-vue` will simply grab the JSON changes and put them into the website frontend.
+
+~~Uses Node.js and ActiveTcl to do the script stuff, but I am considering switching out Tcl (sorry, my precious cursed language...) for something else (contenders: Python, Dart, moar JS, maybe Elixir or Gleam as an experiment).~~
+
 ### Installation (to my knowledge)
 
 wait why did i write this. why would anyone want to install this. wtf.

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "name": "Plant Based Cheeseburger",
+        "description": "The most based cheeseburger on the planet. Its taste? Brilliant. In comparison to the ordinary cheeseburger? Merely an upgrade to its glory. 75/57, nay, an alef zero/0 rating on that one.",
+        "img-source": "plant-based-cheeseburger.jpg"
+    },
+    {
+        "id": 1,
+        "name": "The Bea Burger",
+        "description": "Depending on what the meaning behind the concept of a Bea Burger is, I would either eat no more than a half of it, or make horses no longer called horses if you know what I mean.",
+        "img-source": "the-bea-burger.png"
+    },
+    {
+        "id": 2,
+        "name": "The Sad European",
+        "description": "\"Saddest thing I've seen in my entire life\" ~Andrew Dooda, my latest psychiatric patient whom I subjected to medical malpractice on purpose (I don't  ljke him)",
+        "img-source": "the-sad-european.png"
+    }
+]

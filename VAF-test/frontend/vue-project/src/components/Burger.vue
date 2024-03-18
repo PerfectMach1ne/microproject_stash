@@ -23,12 +23,10 @@ export default {
         data = res.data;
       } catch (err) {
         console.error(err);
+      } finally {
+        this.burgerDesc = data.description;
+        console.log(data);
       }
-
-      this.burgerDesc = data.description;
-      console.log(data);
-
-      return data;
     }
   },
   beforeMount() {
@@ -37,7 +35,6 @@ export default {
   created() {
     // console.log(this.getBurger(1));
     this.imageSrc = `http://127.0.0.1:8000/burger/${this.selected_id}/img`;
-    console.log(this.burgerDesc);
   }
 }
 

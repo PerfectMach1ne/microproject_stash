@@ -1,0 +1,12 @@
+.burger-fig {
+  border: thin #353535 solid;
+  display: flex;
+  flex-flow: column;
+  max-width: 270px;
+  margin: left;
+}
+
+img {
+  max-width: 256px;
+  max-height: 256px;
+}

@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "name": "express",
+  "version": "1.0.0",
+  "description": "PoGamochodoro backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "bwaa"
+  },
+  "author": "",
+  "license": "ISC"
+}

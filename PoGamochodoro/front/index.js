@@ -9,15 +9,16 @@ function digitalClock() {
                    String(m).padStart(2, '0') + ':' +
                    String(s).padStart(2, '0');
 
-  console.log(hourString);
-
   document.getElementById("digital-clock").innerHTML = hourString;
   setTimeout(digitalClock, 1000);
 }
 
 function main() {
   console.log("index.js has been loaded.");
-  onload = (event) => digitalClock();
+  
+  window.addEventListener("load", (event) => {
+    digitalClock();
+  })
 }
 
 main();

@@ -1,9 +1,28 @@
-var path = require('path');
-var express = require('express');
-var cors = require('cors');
-var logger = require('morgan');
+const path = require('path');
+
+const express = require('express');
+const cors = require('cors');
+const logger = require('morgan');
+
+const sqlite3 = require('sqlite3').verbose();
 
 var app = express();
+const db = new sqlite3.Database(':memory:');
+
+db.serialize(() => {
+  db.run('CREATE TABLE baka (baka_type TEXT)');
+  const statement = db.prepare('INSERT INTO baka VALUES (?)');
+
+  for (let i = 0; i < 3; i++) {
+    statement.run(`${i + 1}ple baka${'!'.repeat(3 * i)}`);
+  }
+
+  statement.finalize();
+
+  db.each('SELECT rowid AS id, baka_type FROM baka', (err, row) => {
+    console.log(`${row.id}: ${row.baka_type}`);
+  })
+});
 
 const port = 3057;
 
@@ -27,3 +46,5 @@ app.get('/', cors(corsOptionsDelegate), (req, res, next) => {
 app.listen(port, () => {
   console.log(`PoGamochodoro Express.js backend listening on port ${port}`);
 });
+
+db.close();

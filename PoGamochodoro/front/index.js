@@ -1,3 +1,5 @@
+let currentPomodoro = null;
+
 class Pomodoro {
   #clock = document.getElementById("pomodoroTimer");
   #date;
@@ -52,15 +54,31 @@ function digitalClock() {
 }
 
 function start() {
+  if (currentPomodoro !== null) {
+    clearInterval(currentPomodoro.intervalId);
+    currentPomodoro.intervalId = null;
+  }
+  
   let date = new Date();
   date.setHours(0);
   date.setMinutes(0);
   date.setSeconds(0);
   date.setMilliseconds(0);
 
-  let pomodoro = new Pomodoro(date);
+  currentPomodoro = new Pomodoro(date);
 
-  pomodoro.intervalId = setInterval(() => pomodoro.start(), 1000);
+  currentPomodoro.intervalId = setInterval(() => currentPomodoro.start(), 1000);
+}
+
+function pause() {
+  if (currentPomodoro !== null) {
+    clearInterval(currentPomodoro.intervalId);
+    currentPomodoro.intervalId = null;
+  }
+}
+
+function cease() {
+
 }
 
 function main() {

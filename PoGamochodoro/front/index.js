@@ -14,6 +14,8 @@ class Pomodoro {
     this.#clock.innerText = "00:00:00";
   }
 
+  getIsPaused = () => this.#isPaused;
+
   #refreshTimer() {
     this.h = this.#date.getHours();
     this.m = this.#date.getMinutes() 
@@ -36,6 +38,7 @@ class Pomodoro {
   pause() {
     if (this.#isPaused) {
       this.#isPaused = false;
+      document.getElementById("pause").innerText = "Pause!";
       currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000); 
     } else {
       if (currentPomodoro !== null) {
@@ -44,6 +47,7 @@ class Pomodoro {
       }
 
       this.#isPaused = true;
+      document.getElementById("pause").innerText = "Unpause!";
     }
   }
  
@@ -67,26 +71,28 @@ function digitalClock() {
 }
 
 function start() {
-  if (currentPomodoro !== null) {
-    clearInterval(currentPomodoro.intervalId);
-    currentPomodoro.intervalId = null;
+  if (currentPomodoro == null) { // To prevent the button from being used to just restart it. Cease does that!
+    if (currentPomodoro !== null) {
+      clearInterval(currentPomodoro.intervalId);
+      currentPomodoro.intervalId = null;
+    }
+    
+    let date = new Date();
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
+    date.setMilliseconds(0);
+
+    currentPomodoro = new Pomodoro(date);
+
+    currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000);
   }
-  
-  let date = new Date();
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
-  date.setMilliseconds(0);
-
-  currentPomodoro = new Pomodoro(date);
-
-  currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000);
 }
 
 function pause() {
-  
-
-  currentPomodoro.pause();
+  if (currentPomodoro !== null) {
+    currentPomodoro.pause();
+  }
 }
 
 function cease() {

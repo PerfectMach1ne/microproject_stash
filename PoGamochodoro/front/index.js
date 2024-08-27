@@ -3,6 +3,7 @@ let currentPomodoro = null;
 class Pomodoro {
   #clock = document.getElementById("pomodoroTimer");
   #date;
+  #isPaused = false;
   intervalId;
 
   constructor(date) {
@@ -13,26 +14,38 @@ class Pomodoro {
     this.#clock.innerText = "00:00:00";
   }
 
-  refreshTimer() {
+  #refreshTimer() {
     this.h = this.#date.getHours();
     this.m = this.#date.getMinutes() 
     this.s = this.#date.getSeconds();
   }
 
-  start() {
+  run() {
     let hourString = String(this.h).padStart(2, '0') + ':' + 
                     String(this.m).padStart(2, '0') + ':' +
                     String(this.s).padStart(2, '0');
     
     
-    this.#date.setSeconds(this.#date.getSeconds == 59 ? 0 : this.#date.getSeconds() + 1);
-    this.refreshTimer();
+    this.#date.setSeconds(this.#date.getSeconds() == 59 ? 0 : this.#date.getSeconds() + 1);
+    this.#refreshTimer();
 
     this.#clock.innerText = hourString;
     console.log(hourString);
   }
 
-  pause() {}
+  pause() {
+    if (this.#isPaused) {
+      this.#isPaused = false;
+      currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000); 
+    } else {
+      if (currentPomodoro !== null) {
+        clearInterval(currentPomodoro.intervalId);
+        currentPomodoro.intervalId = null;
+      }
+
+      this.#isPaused = true;
+    }
+  }
  
   cease() {}
 }
@@ -62,19 +75,18 @@ function start() {
   let date = new Date();
   date.setHours(0);
   date.setMinutes(0);
-  date.setSeconds(0);
+  date.setSeconds(1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
   date.setMilliseconds(0);
 
   currentPomodoro = new Pomodoro(date);
 
-  currentPomodoro.intervalId = setInterval(() => currentPomodoro.start(), 1000);
+  currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000);
 }
 
 function pause() {
-  if (currentPomodoro !== null) {
-    clearInterval(currentPomodoro.intervalId);
-    currentPomodoro.intervalId = null;
-  }
+  
+
+  currentPomodoro.pause();
 }
 
 function cease() {

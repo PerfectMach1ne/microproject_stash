@@ -2,6 +2,44 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+header.header-with-clock {
+  display: flex;
+  justify-content: space-around;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titles > h1, h2, h3, h4, h5, h6 {
+  padding: 0px;
+  margin: 5px;
+}
+
 #digital-clock {
   font-size: 2rem;
+}
+
+/*
+// POMODORO CONTROL BOX
+*/
+
+.pomodoro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pomodoro-box > .pomodoro-buttons {
+
+}
+
+.pomodoro-box > #pomodoroTimer {
+
+}
+
+.pomodoro-box > .control.buttons {
+
 }

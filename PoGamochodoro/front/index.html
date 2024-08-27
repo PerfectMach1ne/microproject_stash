@@ -8,16 +8,42 @@
   <title>PoGamochodoro</title>
 </head>
 <body>
-  <h1>PoGamochodoro</h1>
-  <h2>A Pomodoro timer, but like a Gacha game!</h2>
-  <h3>...and with non-malicious intentions.</h3>
-  <h4>All purchases cost 0 EUR.</h4>
-  <h5>I guess you call this game... playn't to win.</h5>
-  <h6>It's a gamified Pomodoro, for tomato's sake! What else do you need in your life?! <a href="pages/pat.html">A pat on your stupid head?!</a></h6>
+  <header class="header-with-clock">
+    <img src="assets/farmers_delight_tomato.webp" width="256px" height="256px" alt="Texture of a tomato item from Minecraft mod 'Farmer's Delight' by vectorwing.">
 
-  <div id="digital-clock" onload="digitalClock()"></div>
+    <div class="titles">
+      <h1>PoGamochodoro</h1>
+      <h2>A Pomodoro timer, but like a Gacha game!</h2>
+      <h3>...and with non-malicious intentions.</h3>
+      <h4>All purchases cost 0 EUR.</h4>
+      <h5>I guess you call this game... playn't to win.</h5>
+      <h6>It's a gamified Pomodoro, for tomato's sake! What else do you need in your life?! <a href="pages/pat.html">A pat on your stupid head?!</a></h6>
+    </div>
 
-  <img src="assets/farmers_delight_tomato.webp" width="64px" alt="Texture of a tomato item from Minecraft mod 'Farmer's Delight' by vectorwing.">
+    <div id="digital-clock" onload="digitalClock()"></div>
+  </header>
+  
+  <main>
+    <div class="pomodoro-box">
+      <div class="pomodoro-buttons">
+        <button type="button" id="pomodoroMode">Pomodoro!</button>
+        <button type="button" id="shortBreakMode">Short break!</button>
+        <button type="button" id="longBreakMode">Long break!</button>
+      </div> <!-- pomodoro-buttons-->
+
+      <div id="pomodoroTimer">
+        --:--:--
+      </div> <!-- pomodoro-timer-->
+
+      <div class="control-buttons">
+        <button type="button" id="start" onClick="start();">Start!</button>
+        <button type="button" id="pause" onClick="pause();">Pause!</button>
+        <button type="button" id="cease" onclick="cease();">Stop & reset!</button>
+      </div> <!-- control-buttons-->
+    </div> <!-- pomodoro-box -->
+
+  </main>
+  
   <img src="assets/minecraft_potato.webp" width="64px" alt="Texture of a potato item from Minecraft.">
 </body>
 </html>

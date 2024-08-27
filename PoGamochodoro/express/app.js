@@ -1,5 +1,3 @@
-const path = require('path');
-
 const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
@@ -7,6 +5,7 @@ const logger = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
 
 var app = express();
+
 const db = new sqlite3.Database(':memory:');
 
 db.serialize(() => {

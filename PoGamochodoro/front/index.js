@@ -23,7 +23,7 @@ class Pomodoro {
                     String(this.s).padStart(2, '0');
     
     
-    this.#date.setSeconds(this.#date.getSeconds + 1);
+    this.#date.setSeconds(this.#date.getSeconds == 59 ? 0 : this.#date.getSeconds() + 1);
     this.refreshTimer();
 
     this.#clock.innerText = hourString;

@@ -1,7 +1,6 @@
 let currentPomodoro = null;
 
 class Pomodoro {
-  #clock = document.getElementById("pomodoroTimer");
   #date;
   #isPaused = false;
   intervalId;
@@ -11,7 +10,7 @@ class Pomodoro {
     this.h = date.getHours();
     this.m = date.getMinutes() 
     this.s = date.getSeconds();
-    this.#clock.innerText = "00:00:00";
+    document.getElementById("pomodoroTimer").innerText = "00:00:00";
   }
 
   getIsPaused = () => this.#isPaused;
@@ -28,10 +27,11 @@ class Pomodoro {
                     String(this.s).padStart(2, '0');
     
     
+    // ToDo: this needs to decrement the time, as opposed to stopwatch functionality.
     this.#date.setSeconds(this.#date.getSeconds() == 59 ? 0 : this.#date.getSeconds() + 1);
     this.#refreshTimer();
 
-    this.#clock.innerText = hourString;
+    document.getElementById("pomodoroTimer").innerText = hourString;
     console.log(hourString);
   }
 
@@ -78,9 +78,10 @@ function start() {
     }
     
     let date = new Date();
+    // ToDO: this needs to start from a time passed via Pomodoro settings to the app!!!
     date.setHours(0);
     date.setMinutes(0);
-    date.setSeconds(1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
+    date.setSeconds(0 + 1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
     date.setMilliseconds(0);
 
     currentPomodoro = new Pomodoro(date);
@@ -97,6 +98,36 @@ function pause() {
 
 function cease() {
 
+}
+
+class PomodoroSettings {
+  constructor(timeStr) {
+    let timeArr = timeStr.split(':');
+
+    this.date = new Date();
+
+    this.date.setHours(Number(timeArr[0]));
+    this.date.setMinutes(Number(timeArr[1]));
+    this.date.setSeconds(Number(timeArr[2]) + 1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
+    this.date.setMilliseconds(0);
+
+    this.h = this.date.getHours();
+    this.m = this.date.getMinutes() 
+    this.s = this.date.getSeconds();
+  }
+
+  toString = () => String(this.h).padStart(2, '0') + ':' + 
+                   String(this.m).padStart(2, '0') + ':' +
+                   String(this.date.getSeconds() - 1).padStart(2, '0');
+  
+}
+
+function submitPomodoroSettings() {
+  let pomodoroLengthInput = document.getElementById("pomodoroLength").value;
+  console.log(pomodoroLengthInput);
+
+  let pomodoroSettings = new PomodoroSettings(pomodoroLengthInput);
+  console.log(pomodoroSettings.toString())
 }
 
 function main() {

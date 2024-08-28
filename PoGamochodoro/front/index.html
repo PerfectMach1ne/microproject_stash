@@ -40,6 +40,10 @@
         <button type="button" id="pause" onClick="pause();">Pause!</button>
         <button type="button" id="cease" onclick="cease();">Stop & reset!</button>
       </div> <!-- control-buttons-->
+
+      <label for="pomodoroLength"></label>
+      <input type="text" id="pomodoroLength" name="pomodoroLength" size="6" minlength="8" maxlength="8">
+      <button id="submitPomodoroLength" onclick="submitPomodoroSettings();">Submit</button>
     </div> <!-- pomodoro-box -->
 
   </main>

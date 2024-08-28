@@ -1,16 +1,20 @@
 let currentPomodoro = null;
+let pomodoroSettings = null;
 
 class Pomodoro {
   #date;
   #isPaused = false;
   intervalId;
 
-  constructor(date) {
+  constructor(date, settings) {
     this.#date = date;
     this.h = date.getHours();
     this.m = date.getMinutes() 
     this.s = date.getSeconds();
     document.getElementById("pomodoroTimer").innerText = "00:00:00";
+    if (settings !== null) {
+      this.#date = settings.getTime();
+    }
   }
 
   getIsPaused = () => this.#isPaused;
@@ -28,7 +32,8 @@ class Pomodoro {
     
     
     // ToDo: this needs to decrement the time, as opposed to stopwatch functionality.
-    this.#date.setSeconds(this.#date.getSeconds() == 59 ? 0 : this.#date.getSeconds() + 1);
+    console.log(this.#date);
+    this.#date.setSeconds(this.#date.getSeconds() - 1);
     this.#refreshTimer();
 
     document.getElementById("pomodoroTimer").innerText = hourString;
@@ -84,7 +89,8 @@ function start() {
     date.setSeconds(0 + 1); // It's gotta be 1, as otherwise the "zeroth second lasts two seconds". Odd fix for an odd bug.
     date.setMilliseconds(0);
 
-    currentPomodoro = new Pomodoro(date);
+    // currentPomodoro = new Pomodoro(date);
+    currentPomodoro = new Pomodoro(date, pomodoroSettings);
 
     currentPomodoro.intervalId = setInterval(() => currentPomodoro.run(), 1000);
   }
@@ -119,6 +125,8 @@ class PomodoroSettings {
   toString = () => String(this.h).padStart(2, '0') + ':' + 
                    String(this.m).padStart(2, '0') + ':' +
                    String(this.date.getSeconds() - 1).padStart(2, '0');
+                  
+  getTime = () => this.date;
   
 }
 
@@ -126,7 +134,7 @@ function submitPomodoroSettings() {
   let pomodoroLengthInput = document.getElementById("pomodoroLength").value;
   console.log(pomodoroLengthInput);
 
-  let pomodoroSettings = new PomodoroSettings(pomodoroLengthInput);
+  pomodoroSettings = new PomodoroSettings(pomodoroLengthInput);
   console.log(pomodoroSettings.toString())
 }
 

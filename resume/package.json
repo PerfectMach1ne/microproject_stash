@@ -1,0 +1,14 @@
+{
+  "name": "serve_yapson.js",
+  "version": "57.420.69",
+  "description": "yappity yap i hate capitalism",
+  "main": "serve_yapson.js",
+  "type": "module",
+  "scripts": {
+    "yap": "node serve_yapson.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "mE",
+  "license": "Let Me Fucking Sleep License"
+}

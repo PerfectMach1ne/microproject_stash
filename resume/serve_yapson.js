@@ -1,8 +1,12 @@
 import * as http from 'node:http';
+import * as htmltpdf from 'html-pdf-node';
 import { openSync, readFileSync, closeSync, /*writeFileSync*/ } from 'node:fs';
 // import { Buffer } from 'node:buffer';
 
 const YAPSON_PATH = "./yapstash/yapson-v2024-10-25.json";
+const HOSTNAME = '192.168.1.177';
+const PORT = 5501;
+
 
 function openYapson(yapson_path) {
   let yapfile;
@@ -32,10 +36,33 @@ function parseYapson(yapfile) {
 
 function run() {
   const YAPFILE = openYapson(YAPSON_PATH);
-  console.log(parseYapson(YAPFILE));
+  let yapjson = parseYapson(YAPFILE);
+  yapjson = JSON.stringify(yapjson);
   closeYapson(YAPFILE); 
 
-  // serve dat json at :5501
+  const SERVER = http.createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204);
+      res.end();
+      return;
+    }
+
+    if (req.method === 'GET' && req.url === '/') {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(yapjson)
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Not Found');
+    }
+  });
+  
+  SERVER.listen(PORT, HOSTNAME, () => {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
+  });
 }
 
 run();

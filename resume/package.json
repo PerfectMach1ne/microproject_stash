@@ -10,5 +10,8 @@
   },
   "keywords": [],
   "author": "mE",
-  "license": "Let Me Fucking Sleep License"
+  "license": "Let Me Fucking Sleep License",
+  "dependencies": {
+    "html-pdf-node": "^1.0.7"
+  }
 }
